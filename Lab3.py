@@ -44,7 +44,7 @@
 #         for j in range(1,i+1):
 #               print("*",end=" ")
 #         print()   
-#     for i in range(5,0,-1):
+#     for i in range(4,0,-1):
 #         for j in range(1,i+1):
 #               print("*",end=" ")
 #         print()       
@@ -96,17 +96,15 @@
 # for i in range(0, 7):
 #     if i == 3 or i == 6:
 #         continue
-#     else:
-#         print(i)
+#     print(i)
 
 #Question No 9 (fibonacci)
 # a = 0
 # b = 1
-# c = 0
 # print(a, end=", ")
 # print(b, end="")
 
-# while c < 50:
+# while True:
 #     c = a + b
 #     if c > 50:
 #         break
@@ -137,6 +135,21 @@
 
 # for row in array:
 #     print(row)
+
+# rows = int(input("Enter no of rows : "))
+# col = int(input("Enter no of columns : "))
+
+# matrix = []
+# for i in range(rows):
+#     row = []
+#     for j in range(col):
+#         row.append(i * j)
+#     matrix.append(row)
+# print()
+# for row in matrix:
+#     print(row)
+# print("---------------------------------------------------------------------------------------------------")
+
 
 # Question NO 12
 
@@ -184,51 +197,92 @@
 #         elif char.isdigit():  # Check if character is a digit
 #             digits += 1
     
-#     print(f"Letter count: {letters}")
-#     print(f"Digit count: {digits}")
+#     print("Letter count: ",letters)
+#     print("Digit count: ",digits)
 
 # count_letters_digits()
 
 
 
 # Question No 15
-def check_password_valid(password):
-    # Define rules
-    min_length = 6
-    max_length = 16
-    special_chars = ['$','#','@']
+# def check_password_valid(password):
+#     # Define rules
+#     min_length = 6
+#     max_length = 16
+#     special_chars = ['$','#','@']
     
-    # Check length
-    if len(password) < min_length or len(password) > max_length:
-        print(f"Password length should be between {min_length} and {max_length} characters")
-        return False
+#     # Check length
+#     if len(password) < min_length or len(password) > max_length:
+#         print(f"Password length should be between {min_length} and {max_length} characters")
+#         return False
     
-    # Check for required characters
-    has_lower = any(char.islower() for char in password)
-    has_upper = any(char.isupper() for char in password)
-    has_digit = any(char.isdigit() for char in password)
-    has_special = any(char in special_chars for char in password)
+#     # Check for required characters
+#     has_lower = any(char.islower() for char in password)
+#     has_upper = any(char.isupper() for char in password)
+#     has_digit = any(char.isdigit() for char in password)
+#     has_special = any(char in special_chars for char in password)
     
-    # Validate based on rules
-    if not has_lower:
-        print("Password should contain at least one lowercase letter")
-        return False
-    if not has_upper:
-        print("Password should contain at least one uppercase letter")
-        return False
-    if not has_digit:
-        print("Password should contain at least one digit (0-9)")
-        return False
-    if not has_special:
-        print("Password should contain at least one of the following special characters: $, #, @")
-        return False
+#     # Validate based on rules
+#     if not has_lower:
+#         print("Password should contain at least one lowercase letter")
+#         return False
+#     if not has_upper:
+#         print("Password should contain at least one uppercase letter")
+#         return False
+#     if not has_digit:
+#         print("Password should contain at least one digit (0-9)")
+#         return False
+#     if not has_special:
+#         print("Password should contain at least one of the following special characters: $, #, @")
+#         return False
     
-    # All criteria met
-    return True
+#     # All criteria met
+#     return True
 
-password = input("Enter your password: ")
-if check_password_valid(password):
-    print("Password is valid")
+# password = input("Enter your password: ")
+# if check_password_valid(password):
+#     print("Password is valid")
+# else:
+#     print("Password is invalid")
+
+
+
+
+print("Password Requirements:")
+print("At least 1 letter between [a-z] and 1 letter between [A-Z]")
+print("At least 1 number between [0-9]")
+print("At least 1 character from [$#@]")
+print("Minimum length: 6")
+print("Maximum length: 16")
+
+password = input("Enter a password: ")
+valid_password = True
+
+if len(password) < 6 or len(password) > 16:
+    print("Password length must be between 6 and 16 characters.")
+    valid_password = False
+
+if not any(char.islower() for char in password):
+    print("Password must contain at least one lowercase letter (a-z).")
+    valid_password = False
+
+if not any(char.isupper() for char in password):
+    print("Password must contain at least one uppercase letter (A-Z).")
+    valid_password = False
+
+if not any(char.isdigit() for char in password):
+    print("Password must contain at least one digit (0-9).")
+    valid_password = False
+
+if not any(char in ['$', '#', '@'] for char in password):
+    print("Password must contain at least one of the following characters: $, #, @.")
+    valid_password = False
+
+if valid_password:
+    print("Password is valid.")
 else:
-    print("Password is invalid")
+    print("Password does not meet the requirements.")
+
+print("---------------------------------------------------------------------------------------------------")
+
 
